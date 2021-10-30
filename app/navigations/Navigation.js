@@ -9,47 +9,47 @@ import AccountStack from "./AccountStack";
 import SearchStack from "./SearchStack";
 import TopRestaurantsStack from "./TopRestaurantsStack";
 
-const tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function Navigation(){
   return(
     <NavigationContainer>
-      <tab.Navigator
+      <Tab.Navigator
         initialRouteName="Restaurants"
         tabBarOptions={{
           inactiveTintColor: "#646464",
           activeTintColor: "#00a680",
         }}
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ color }) => ScreenOptions(route, color),
+          tabBarIcon: ({ color }) => screenOptions(route, color),
         })}
       >
-        <tab.Screen 
+        <Tab.Screen 
           name="Restaurants" 
           component={RestaurantsStack}
           options={{ title: "restaurantes" }} 
         />
-        <tab.Screen 
+        <Tab.Screen 
           name= "Favorites" 
           component={FavoritesStack}
           options={{ title: "Favoritos" }}
         />
-        <tab.Screen
+        <Tab.Screen
           name="Account"
           component={AccountStack}
           options={{ title: "Cuenta" }}
         />
-        <tab.Screen
+        <Tab.Screen
           name="Search"
           component={SearchStack}
           options={{title: "Buscar" }}
         />
-        <tab.Screen
+        <Tab.Screen
           name="TopRestaurants"
           component={TopRestaurantsStack}
           options={{title: "top 5" }}
         />
-      </tab.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
@@ -64,8 +64,8 @@ function screenOptions(route, color){
     case "Favorites":
       iconName = "heart-outline"
       break;
-    case "TopRestaurant":
-      iconName = "stack-outline"
+    case "TopRestaurants":
+      iconName = "star-outline"
       break;
     case "Search":
       iconName = "magnify"
